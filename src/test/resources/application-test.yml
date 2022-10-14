@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/treinamento-algaworks-test?serverTimezone=UTC
+    username: md2net
+    password: md2net2018
+    driver-class-name: org.postgresql.Driver    hikari:      maximum-pool-size: 5 #por padrão é 10 e se específicar somente o máximo o mínimo assume o mesmo valor do máximo
+      minimum-idle: 3
+      idle-timeout: 10000 #no mínimo 10s e é expressado em milisegundos
+  flyway:    locations:    - classpath:db/migration

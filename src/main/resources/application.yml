@@ -1,0 +1,28 @@
+spring:
+  profiles:    active:    - development
+  datasource:
+    url: jdbc:postgresql://localhost:5432/treinamento-algaworks?serverTimezone=UTC
+    username: md2net
+    password: md2net2018
+    driver-class-name: org.postgresql.Driver    hikari:      maximum-pool-size: 5 #por padrão é 10 e se específicar somente o máximo o mínimo assume o mesmo valor do máximo
+      minimum-idle: 3
+      idle-timeout: 10000 #no mínimo 10s e é expressado em milisegundos
+  flyway:    locations:    - classpath:db/migration
+    - classpath:db/testdata
+  jpa:
+    show-sql: true
+    ##gerando a DDL do banco
+    #properties:    #  javax.persistence.schema-generation.scripts.action: create
+    #  javax.persistence.schema-generation.scripts.create-target: src/main/resources/ddl.sql
+  security:    oauth2:      resourceserver:        opaquetoken:          introspection-uri: http://localhost:8081/oauth/check_token
+          client-id: app-md2net-qualitymanager
+          client-secret: 123
+  
+  mvc:    throw-exception-if-no-handler-found: true
+  jackson:    deserialization:      fail-on-unknown-properties: true
+      fail-on-ignored-properties: true  web:    resources:      add-mappings: false
+
+server:  port: 8080
+notificador:
+  email:    host-servidor:   
+    porta-servidor: 28    
