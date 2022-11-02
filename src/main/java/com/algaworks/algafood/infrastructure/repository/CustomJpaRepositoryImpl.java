@@ -32,4 +32,10 @@ private EntityManager manager;
 		return Optional.ofNullable(entity);
 	}
 
+	@Override
+	public void detach(T entity) {
+		// TODO Auto-generated method stub
+		manager.detach(entity);
+	}
+
 }
